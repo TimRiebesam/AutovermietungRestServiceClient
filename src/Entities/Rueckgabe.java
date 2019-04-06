@@ -35,6 +35,17 @@ public class Rueckgabe implements Serializable{
         this.kommentar = kommentar;
         this.buchung = buchung;
     }
+    
+    @Override
+    public String toString() {
+    	return "Id: " + id + "\n" +
+    			"Rückgabedatum: " + rueckgabeDatum + "\n" + 
+    			"Rückgabeort: " + rueckgabeOrt + "\n" + 
+    			"Schadensmeldung: " + schadensMeldung + "\n" + 
+    			"Kommentar: " + kommentar + "\n" + 
+    			"Fahrzeug Zufriedenheit: " + fahrzeugZufriedenheit + "\n" +
+    			"Gesamt Zufriedenheit: " + gesamtZufriedenheit;
+    }
 
     public long getId() {
         return id;

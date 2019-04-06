@@ -29,12 +29,11 @@ public class RueckgabeResource extends Resource{
 	
 	public Rueckgabe[] findAll() throws UnirestException, WebAppException {
         // HTTP-Anfrage senden
-        HttpResponse<String> httpResponse = Unirest.get(this.url)
+        HttpResponse<String> httpResponse = Unirest.get(url)
                 .header("accept", "application/json")
                 .basicAuth(username, password)
                 .asString();
         
-        System.out.println(httpResponse.getHeaders());
         System.out.println(httpResponse.getBody());
         
         // Exception werfen, wenn der Server einen Fehler meldet
