@@ -3,8 +3,8 @@ package Resource;
 public abstract class Resource {
     
     
-    public static String username = "tim123";
-    public static String password = "123456";
+    public static String username = "niggo";
+    public static String password = "niggo123";
     
     //
     // Benutzername und Passwort setzen

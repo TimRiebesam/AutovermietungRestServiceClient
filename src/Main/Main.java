@@ -2,21 +2,31 @@ package Main;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
 
+import Entities.Auto;
 import Entities.Rueckgabe;
 import Exception.WebAppException;
+import Resource.AutoResource;
 import Resource.RueckgabeResource;
 
 public class Main {
 	
 	public static void main(String[] args) throws UnirestException, WebAppException {
 		
-		//Return eine Rückgabe
+		/*///Return eine Rückgabe
 		RueckgabeResource rueckgabeResource = new RueckgabeResource();
-		Rueckgabe rueckgabe = rueckgabeResource.findById(1600);
+		Rueckgabe rueckgabe = rueckgabeResource.findById(1);
 		System.out.println(rueckgabe);
 		
 		//Return alle Rückgaben
-		System.out.println(findAllRueckgabe());
+		System.out.println(findAllRueckgabe());*/
+		
+		//Ein Auto zurückgeben zum Testen
+		AutoResource autoResource = new AutoResource();
+		 Auto auto = autoResource.findById(2);
+		System.out.println(auto.toString());
+		
+		//Alles Autos zurückgeben
+		System.out.println(findAllAutos());
 	}
 
 	public static String findAllRueckgabe() throws UnirestException, WebAppException{
@@ -42,5 +52,31 @@ public class Main {
 		}
 		return rueckgabenAsString;
 	}
+	
+	
+	public static String findAllAutos() throws UnirestException, WebAppException{
+		AutoResource autoResource = new AutoResource();
+		String autosAsString = "";
+		
+		try{
+			Auto[] autos = autoResource.findAll();
+
+			if (autos != null) {
+				for (Auto auto : autos) {
+					autosAsString = autosAsString + "\n" + auto.toString();
+				}
+			}
+		}
+		catch(NullPointerException nle){
+			return "Kein Ergebnis gefunden!";  
+		}
+		catch(WebAppException e){
+			System.err.println("Es ist eine WebAppException "
+					+ "\nvlt. dies könnte daran liegen, das etwas mit Ihrer Eingabe nicht stimmt"
+					+ "\n\n");
+		}
+		return autosAsString;
+	}
+	
 
 }
